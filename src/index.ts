@@ -8,7 +8,29 @@ const rl = readline.createInterface({
 	output: process.stdout
 });
 
-process.stdout.write("git-ts menu\n\na - add all files\nc - commit with message\nC - commit with message and with sign-off\np - pull\nP - push\nf - fetch\ns - status\nl - log\n\n");
+const colors = {
+	reset: "\x1b[0m",
+	red: "\x1b[31m",
+	green: "\x1b[32m",
+	yellow: "\x1b[33m",
+	blue: "\x1b[34m",
+	magenta: "\x1b[35m",
+	cyan: "\x1b[36m",
+	white: "\x1b[37m",
+	bold: "\x1b[1m",
+};
+
+process.stdout.write(`${colors.bold}git-ts menu${colors.reset}\n\n` +
+	`a ${colors.bold}- ${colors.blue}add all files${colors.reset}\n` +
+	`c ${colors.bold}- ${colors.blue}commit with message${colors.reset}\n` +
+	`C ${colors.bold}- ${colors.blue}commit with message and with sign-off${colors.reset}\n` +
+	`p ${colors.bold}- ${colors.blue}pull${colors.reset}\n` +
+	`P ${colors.bold}- ${colors.blue}push${colors.reset}\n` +
+	`f ${colors.bold}- ${colors.blue}fetch${colors.reset}\n` +
+	`s ${colors.bold}- ${colors.blue}status${colors.reset}\n` +
+	`l ${colors.bold}- ${colors.blue}log${colors.reset}\n` +
+	`q ${colors.bold}- ${colors.blue}quit${colors.reset}\n\n`
+);
 
 rl.question("option: ", (key: string) => {
 	switch (key.trim()) {
@@ -50,5 +72,7 @@ rl.question("option: ", (key: string) => {
 			});
 			rl.close();
 			break;
+		case "q":
+			rl.close();
 	}
 });
