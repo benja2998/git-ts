@@ -1,33 +1,33 @@
 {
-  "name": "git-ts",
-  "version": "0.0.1",
-  "description": "✨The most user-friendly, blazingly-fast CLI for Git🔥",
-  "keywords": [
-    "git",
-    "ts",
-    "typescript",
-    "javascript",
-    "cli"
-  ],
-  "homepage": "https://github.com/git-ts/git-ts#readme",
-  "bugs": {
-    "url": "https://github.com/git-ts/git-ts/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/git-ts/git-ts.git"
-  },
-  "license": "GPL-3.0-or-later",
-  "author": "benja2998",
-  "type": "commonjs",
-  "main": "dist/index.js",
-  "scripts": {
-    "test": "echo \"No tests yet\"",
-    "build": "tsc",
-    "prepublishOnly": "tsc"
-  },
-  "devDependencies": {
-    "@types/node": "^25.0.9",
-    "typescript": "^5.9.3"
-  }
+	"name": "git-ts",
+	"version": "0.0.1",
+	"description": "✨The most user-friendly, blazingly-fast CLI for Git🔥",
+	"keywords": [
+		"git",
+		"ts",
+		"typescript",
+		"javascript",
+		"cli"
+	],
+	"homepage": "https://github.com/git-ts/git-ts#readme",
+	"bugs": {
+		"url": "https://github.com/git-ts/git-ts/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/git-ts/git-ts.git"
+	},
+	"license": "GPL-3.0-or-later",
+	"author": "benja2998",
+	"type": "commonjs",
+	"main": "dist/index.js",
+	"scripts": {
+		"test": "echo \"No tests yet\"",
+		"build": "tsc",
+		"prepublishOnly": "tsc"
+	},
+	"devDependencies": {
+		"@types/node": "^25.0.9",
+		"typescript": "^5.9.3"
+	}
 }

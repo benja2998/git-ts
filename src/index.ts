@@ -21,18 +21,18 @@ const colors = {
 };
 
 process.stdout.write(`${colors.bold}git-ts menu${colors.reset}\n\n` +
-	`a ${colors.bold}- ${colors.blue}add all files${colors.reset}\n` +
-	`c ${colors.bold}- ${colors.blue}commit with message${colors.reset}\n` +
-	`C ${colors.bold}- ${colors.blue}commit with message and with sign-off${colors.reset}\n` +
-	`p ${colors.bold}- ${colors.blue}pull${colors.reset}\n` +
-	`P ${colors.bold}- ${colors.blue}push${colors.reset}\n` +
-	`f ${colors.bold}- ${colors.blue}fetch${colors.reset}\n` +
-	`s ${colors.bold}- ${colors.blue}status${colors.reset}\n` +
-	`l ${colors.bold}- ${colors.blue}log${colors.reset}\n` +
-	`q ${colors.bold}- ${colors.blue}quit${colors.reset}\n\n`
+	`${colors.bold}a${colors.reset} - ${colors.bold}${colors.blue}add all files${colors.reset}\n` +
+	`${colors.bold}c${colors.reset} - ${colors.bold}${colors.blue}commit with message${colors.reset}\n` +
+	`${colors.bold}C${colors.reset} - ${colors.bold}${colors.blue}commit with message and with sign-off${colors.reset}\n` +
+	`${colors.bold}p${colors.reset} - ${colors.bold}${colors.blue}pull${colors.reset}\n` +
+	`${colors.bold}P${colors.reset} - ${colors.bold}${colors.blue}push${colors.reset}\n` +
+	`${colors.bold}f${colors.reset} - ${colors.bold}${colors.blue}fetch${colors.reset}\n` +
+	`${colors.bold}s${colors.reset} - ${colors.bold}${colors.blue}status${colors.reset}\n` +
+	`${colors.bold}l${colors.reset} - ${colors.bold}${colors.blue}log${colors.reset}\n` +
+	`${colors.bold}q${colors.reset} - ${colors.bold}${colors.blue}quit${colors.reset}\n\n`
 );
 
-rl.question("option: ", (key: string) => {
+rl.question(`${colors.bold}option:${colors.reset} `, (key: string) => {
 	switch (key.trim()) {
 		case "a":
 			exec("git add -A");
@@ -62,12 +62,26 @@ rl.question("option: ", (key: string) => {
 			exec("git fetch");
 			rl.close();
 			break;
-		case "s":
-			const child = spawn("git", ["status", "--short"]);
-			child.stdout.on('data', (data: string | Uint8Array<ArrayBufferLike>) => {
+		case "l":
+			process.stdout.write("-- oldest --\n");
+			const child2 = spawn("git", ["log", "--reverse", "--decorate", "--color=always"]);
+			child2.stdout.on("data", (data: string | Uint8Array<ArrayBufferLike>) => {
 				process.stdout.write(data);
 			});
-			child.stderr.on('data', (data: string | Uint8Array<ArrayBufferLike>) => {
+			child2.stderr.on("data", (data: string | Uint8Array<ArrayBufferLike>) => {
+				process.stdout.write(data);
+			});
+			child2.on("close", (_code: number) => {
+				process.stdout.write("-- newest --\n");
+			});
+			rl.close();
+			break;
+		case "s":
+			const child = spawn("git", ["status", "--short"]);
+			child.stdout.on("data", (data: string | Uint8Array<ArrayBufferLike>) => {
+				process.stdout.write(data);
+			});
+			child.stderr.on("data", (data: string | Uint8Array<ArrayBufferLike>) => {
 				process.stdout.write(data);
 			});
 			rl.close();
