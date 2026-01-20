@@ -1,7 +1,9 @@
 {
-	"name": "git-ts",
-	"version": "0.0.1",
-	"bin": "dist/index.js",
+	"name": "@benja2998/git-ts",
+	"version": "0.0.2",
+	"bin": {
+		"git-ts": "dist/index.js"
+	},
 	"description": "✨The most user-friendly, blazingly-fast CLI for Git🔥",
 	"keywords": [
 		"git",

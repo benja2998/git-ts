@@ -20,7 +20,7 @@ Then you'll have `git-ts` in your PATH.
 ### NPM
 
 ```bash
-npm i -g git-ts
+npm i -g @benja2998/git-ts
 ```
 
 Then you'll have `git-ts` in your PATH.
