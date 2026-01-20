@@ -1,6 +1,7 @@
 {
 	"name": "git-ts",
 	"version": "0.0.1",
+	"bin": "dist/index.js",
 	"description": "✨The most user-friendly, blazingly-fast CLI for Git🔥",
 	"keywords": [
 		"git",
