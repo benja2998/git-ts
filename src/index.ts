@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const { exec } = require("child_process");
+const { exec, spawn } = require("child_process");
 const readline = require("readline");
 
 const rl = readline.createInterface({
@@ -41,48 +41,14 @@ rl.question("option: ", (key: string) => {
 			rl.close();
 			break;
 		case "s":
-			exec("git status --porcelain", (err: string, stdout: string) => {
-				if (err) {
-					return;
-				}
-
-				const lines = stdout.split("\n").filter(Boolean);
-				const parsed = lines.map(line => {
-					const [x, y] = [line[0], line[1]];
-					const path = line.slice(3).trim();
-					let status = "";
-
-					// staged changes
-					if (x === "M") {
-						status = "staged modification";
-					} else if (x === "A") {
-						status = "staged addition";
-					} else if (x === "D") {
-						status = "staged deletion";
-					} else if (x === "R") {
-						status = "staged rename";
-					} else if (x === "C") {
-						status = "staged copy";
-					} else if (x === "U") {
-						status = "unmerged (conflict)";
-					}
-
-					// unstaged changes
-					if (y === "M") {
-						status = "modified";
-					} else if (y === "D") {
-						status = "deleted";
-					} else if (y === "?") {
-						status = "untracked";
-					} else if (y === "!") {
-						status = "ignored";
-					}
-
-					return { path, status };
-				});
-
-				console.log(parsed);
+			const child = spawn("git", ["status", "--short"]);
+			child.stdout.on('data', (data: string | Uint8Array<ArrayBufferLike>) => {
+				process.stdout.write(data);
 			});
+			child.stderr.on('data', (data: string | Uint8Array<ArrayBufferLike>) => {
+				process.stdout.write(data);
+			});
+			rl.close();
 			break;
 	}
 });
