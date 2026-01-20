@@ -10,13 +10,13 @@
 		"javascript",
 		"cli"
 	],
-	"homepage": "https://github.com/git-ts/git-ts#readme",
+	"homepage": "https://github.com/benja2998/git-ts#readme",
 	"bugs": {
-		"url": "https://github.com/git-ts/git-ts/issues"
+		"url": "https://github.com/benja2998/git-ts/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/git-ts/git-ts.git"
+		"url": "git+https://github.com/benja2998/git-ts.git"
 	},
 	"license": "GPL-3.0-or-later",
 	"author": "benja2998",
