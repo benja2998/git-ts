@@ -7,7 +7,7 @@
 ### Git
 
 ```bash
-git clone https://github.com/git-ts/git-ts
+git clone https://github.com/benja2998/git-ts
 cd git-ts
 npm ci
 npm i
