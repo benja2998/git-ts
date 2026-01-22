@@ -10,6 +10,7 @@ local M = {}
 
 function M.open()
    vim.cmd("terminal git-ts");
+   vim.cmd("startinsert");
 end
 
 return M
