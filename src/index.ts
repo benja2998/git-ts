@@ -54,22 +54,22 @@ function showMenu() {
                 break;  
             case "c":  
                 rl.question("message: ", (msg: string) => {  
-                    spawn("git", ["commit", "-m", msg], { stdio: "inherit" }).on("close", showMenu);  
+		    pipeToLess(["commit", "-m", msg]);
                 });
                 break;  
             case "C":  
                 rl.question("message: ", (msg: string) => {  
-                    spawn("git", ["commit", "-sm", msg], { stdio: "inherit" }).on("close", showMenu);  
+		    pipeToLess(["commit", "-sm", msg]);
                 });
                 break;  
-            case "p":  
-                spawn("git", ["pull", "--rebase"], { stdio: "inherit" }).on("close", showMenu);
+            case "p":
+		pipeToLess(["pull", "--rebase"]);
                 break;  
             case "P":  
-                spawn("git", ["push"], { stdio: "inherit" }).on("close", showMenu);
+		pipeToLess(["push"]);
                 break;  
             case "f":  
-                spawn("git", ["fetch"], { stdio: "inherit" }).on("close", showMenu);
+		pipeToLess(["fetch"]);
                 break;  
             case "s":  
                 pipeToLess(["status"]);
