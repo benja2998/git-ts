@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const { exec, spawn } = require("child_process");
 const readline = require("readline");
 
