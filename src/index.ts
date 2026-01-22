@@ -27,13 +27,13 @@ function pipeToLess(args: string[]) {
     git.stderr.pipe(less.stdin);
 
     less.on("close", () => {
-	rl.close();
         console.clear(); // clear the screen after exiting less
         showMenu();
     });
 }
 
-function showMenu() {  
+function showMenu() {
+    console.clear();
     process.stdout.write(`${colors.bold}git-ts menu${colors.reset}\n\n` +  
         `${colors.bold}a${colors.reset} - ${colors.bold}${colors.blue}add all files${colors.reset}\n` +  
         `${colors.bold}c${colors.reset} - ${colors.bold}${colors.blue}commit with message${colors.reset}\n` +  
@@ -51,34 +51,28 @@ function showMenu() {
         switch (key.trim()) {  
             case "a":  
                 spawn("git", ["add", "-A"], { stdio: "inherit" }).on("close", showMenu);
-		console.clear();
                 break;  
             case "c":  
                 rl.question("message: ", (msg: string) => {  
                     spawn("git", ["commit", "-m", msg], { stdio: "inherit" }).on("close", showMenu);  
-                });  
-		console.clear();
+                });
                 break;  
             case "C":  
                 rl.question("message: ", (msg: string) => {  
                     spawn("git", ["commit", "-sm", msg], { stdio: "inherit" }).on("close", showMenu);  
-                });  
-		console.clear();
+                });
                 break;  
             case "p":  
-                spawn("git", ["pull", "--rebase"], { stdio: "inherit" }).on("close", showMenu);  
-		console.clear();
+                spawn("git", ["pull", "--rebase"], { stdio: "inherit" }).on("close", showMenu);
                 break;  
             case "P":  
-                spawn("git", ["push"], { stdio: "inherit" }).on("close", showMenu);  
-		console.clear();
+                spawn("git", ["push"], { stdio: "inherit" }).on("close", showMenu);
                 break;  
             case "f":  
-                spawn("git", ["fetch"], { stdio: "inherit" }).on("close", showMenu);  
-		console.clear();
+                spawn("git", ["fetch"], { stdio: "inherit" }).on("close", showMenu);
                 break;  
             case "s":  
-                pipeToLess(["status"]);  
+                pipeToLess(["status"]);
                 break;  
             case "l":  
                 pipeToLess(["log", "--reverse", "--decorate", "--color=always"]);  
@@ -88,7 +82,6 @@ function showMenu() {
                 break;  
             case "q":  
                 rl.close();  
-		console.clear();
                 break;  
             default:  
                 showMenu();  
