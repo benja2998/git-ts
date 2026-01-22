@@ -4,13 +4,37 @@ if vim.g.loaded_gitts == 1 then
    return
 end
 
-vim.g.loaded_gitts = 1;
+vim.g.loaded_gitts = 1
 
 local M = {}
 
 function M.open()
-   vim.cmd("terminal git-ts");
-   vim.cmd("startinsert");
+   -- Create a new scratch buffer for the floating terminal
+   local buf = vim.api.nvim_create_buf(false, true) -- unlisted, scratch
+
+   -- Determine the size of the floating window
+   local width = math.floor(vim.o.columns * 0.8)
+   local height = math.floor(vim.o.lines * 0.8)
+   local row = math.floor((vim.o.lines - height) / 2)
+   local col = math.floor((vim.o.columns - width) / 2)
+
+   -- Window options
+   local opts = {
+      style = "minimal",
+      relative = "editor",
+      width = width,
+      height = height,
+      row = row,
+      col = col,
+      border = "rounded",
+   }
+
+   -- Open the floating window
+   local win = vim.api.nvim_open_win(buf, true, opts)
+
+   -- Start terminal in that buffer
+   vim.fn.termopen("git-ts")
+   vim.cmd("startinsert")
 end
 
 return M

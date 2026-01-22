@@ -25,4 +25,4 @@ Unlike lazygit, git-ts can sign off commits, has a tiny codebase, and does not u
 
 ## Performance
 
-git-ts starts up in ~0.3 blinks.
+git-ts is very fast.

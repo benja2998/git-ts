@@ -18,6 +18,8 @@ Good:
 process.stdout.write("Hello!\n");
 ```
 
+An exception to this is `console.clear()`.
+
 ## Typing
 
 This project's tsconfig.json is very strict.
