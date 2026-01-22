@@ -19,5 +19,9 @@ require("lazy").setup({
       { "benja2998/git-ts" }
 		     })
 
+-- Set a nicer leader key
+vim.g.mapleader = " "
+
 -- Keymap
 vim.keymap.set("n", "<leader>gs", function() require("git-ts").open() end, { noremap=true, silent=true, desc="Open GitTS" })
+
