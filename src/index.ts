@@ -59,7 +59,7 @@ function showMenu() {
                 break;  
             case "C":  
                 rl.question("message: ", (msg: string) => {  
-		    pipeToLess(["commit", "-sm", msg]);
+		    pipeToLess(["commit", "-sm", msg]); 
                 });
                 break;  
             case "p":
