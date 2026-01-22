@@ -2,10 +2,6 @@
 
 To begin hacking git-ts, you must first follow the style guide.
 
-## Indentation
-
-Use tabs, as they save disk space.
-
 ## Functions
 
 Avoid redundant functions like the ones in the `console` object.
