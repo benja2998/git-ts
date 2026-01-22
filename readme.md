@@ -17,4 +17,4 @@ Then you'll have `git-ts` in your PATH.
 
 ## Neovim integration
 
-See example-init.lua for information.
+See example-init.lua for information. Note that the plugin requires you to have installed git-ts and have it in your PATH.
