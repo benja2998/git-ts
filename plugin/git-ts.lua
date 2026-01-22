@@ -9,7 +9,7 @@ vim.g.loaded_gitts = 1;
 local M = {}
 
 function m.open()
-   if vim.fn.executable("git-ts") != 0 then
+   if vim.fn.executable("git-ts") ~= 0 then
 	  print("No git-ts. Please install the git-ts executable!");
 	  return
    end
