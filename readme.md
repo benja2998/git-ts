@@ -22,3 +22,7 @@ See example-init.lua for information. Note that the plugin requires you to have 
 ## Why use this instead of Lazygit
 
 Unlike lazygit, git-ts can sign off commits, has a tiny codebase, and does not use fancy terminal features like alternate screens.
+
+## Performance
+
+git-ts starts up in ~0.3 blinks.
