@@ -17,7 +17,7 @@ Then you'll have `git-ts` in your PATH.
 
 ## Neovim integration
 
-See example-init.lua for information. Note that the plugin requires you to have installed git-ts and have it in your PATH.
+The Neovim plugin is how git-ts is meant to be used. For a starting point, see `example-init.lua`.
 
 ## Why use this instead of Lazygit
 
