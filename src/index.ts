@@ -75,7 +75,7 @@ function showMenu() {
                 pipeToLess(["status"]);
                 break;  
             case "l":  
-                pipeToLess(["log", "--reverse", "--decorate", "--color=always"]);  
+                pipeToLess(["log", "--decorate", "--graph", "--color=always"]);  
                 break;  
             case "d":  
                 pipeToLess(["diff", "HEAD", "--color=always"]);  
