@@ -27,8 +27,9 @@ process.stdout.write(`${colors.bold}git-ts menu${colors.reset}\n\n` +
 	`${colors.bold}f${colors.reset} - ${colors.bold}${colors.blue}fetch${colors.reset}\n` +
 	`${colors.bold}s${colors.reset} - ${colors.bold}${colors.blue}status${colors.reset}\n` +
 	`${colors.bold}l${colors.reset} - ${colors.bold}${colors.blue}log${colors.reset}\n` +
+	`${colors.bold}d${colors.reset} - ${colors.bold}${colors.blue}diff${colors.reset}\n` +
 	`${colors.bold}q${colors.reset} - ${colors.bold}${colors.blue}quit${colors.reset}\n\n`
-);
+					);
 
 rl.question(`${colors.bold}option:${colors.reset} `, (key: string) => {
 	switch (key.trim()) {
@@ -81,6 +82,19 @@ rl.question(`${colors.bold}option:${colors.reset} `, (key: string) => {
 			});
 			child.stderr.on("data", (data: string | Uint8Array<ArrayBufferLike>) => {
 				process.stdout.write(data);
+			});
+			rl.close();
+			break;
+		case "d":
+			const child3 = spawn("git", ["-p", "diff", "HEAD", "--color=always"]);
+			child3.stdout.on("data", (data: string | Uint8Array<ArrayBufferLike>) => {
+				process.stdout.write(data);
+			});
+			child3.stdout.on("data", (data: string | Uint8Array<ArrayBufferLike>) => {
+				process.stdout.write(data);
+			});
+			child3.on("close", (_code: number) => {
+				process.stdout.write("Scroll up to see output\n");
 			});
 			rl.close();
 			break;

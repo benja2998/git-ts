@@ -18,3 +18,7 @@ Then you'll have `git-ts` in your PATH.
 ## Neovim integration
 
 See example-init.lua for information. Note that the plugin requires you to have installed git-ts and have it in your PATH.
+
+## Why use this instead of Lazygit
+
+Unlike lazygit, git-ts can sign off commits, has a tiny codebase, and does not use fancy terminal features like alternate screens.
