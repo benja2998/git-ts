@@ -14,3 +14,7 @@ npm link
 ```
 
 Then you'll have `git-ts` in your PATH.
+
+## Neovim integration
+
+See example-init.lua for information.
