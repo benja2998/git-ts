@@ -67,7 +67,7 @@ function showMenu() {
 				});
 				break;
 			case "s":
-				const child = spawn("git", ["status", "--short"]);
+				const child = spawn("git", ["status"]);
 				child.stdout.on("data", (data: string | Uint8Array<ArrayBufferLike>) => process.stdout.write(data));
 				child.stderr.on("data", (data: string | Uint8Array<ArrayBufferLike>) => process.stdout.write(data));
 				child.on("close", () => showMenu());
