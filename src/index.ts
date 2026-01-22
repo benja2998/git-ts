@@ -42,10 +42,11 @@ function showMenu() {
         `${colors.bold}P${colors.reset} - ${colors.bold}${colors.blue}push${colors.reset}\n` +  
         `${colors.bold}f${colors.reset} - ${colors.bold}${colors.blue}fetch${colors.reset}\n` +  
         `${colors.bold}s${colors.reset} - ${colors.bold}${colors.blue}status${colors.reset}\n` +  
-        `${colors.bold}l${colors.reset} - ${colors.bold}${colors.blue}log${colors.reset}\n` +  
-        `${colors.bold}d${colors.reset} - ${colors.bold}${colors.blue}diff${colors.reset}\n` +  
+        `${colors.bold}l${colors.reset} - ${colors.bold}${colors.blue}log${colors.reset}\n` +
+	`${colors.bold}d${colors.reset} - ${colors.bold}${colors.blue}diff${colors.reset}\n` +
+	`${colors.bold}!${colors.reset} - ${colors.bold}${colors.blue}run git command${colors.reset}\n` +
         `${colors.bold}q${colors.reset} - ${colors.bold}${colors.blue}quit${colors.reset}\n\n`  
-    );  
+			);  
 
     rl.question(`${colors.bold}option:${colors.reset} `, (key: string) => {  
         switch (key.trim()) {  
@@ -70,7 +71,7 @@ function showMenu() {
                 break;  
             case "f":  
 		pipeToLess(["fetch"]);
-                break;  
+                break;
             case "s":  
                 pipeToLess(["status"]);
                 break;  
@@ -79,10 +80,25 @@ function showMenu() {
                 break;  
             case "d":  
                 pipeToLess(["diff", "HEAD", "--color=always"]);  
-                break;  
+                break;
+	    case "!":
+		rl.question("git command (e.g., show HEAD): ", (cmd: string) => {
+		    const args = cmd
+			.trim()
+			.split(/\s+/)
+			.filter(Boolean);
+
+		    if (args.length === 0) {
+			showMenu();
+			return;
+		    }
+
+		    pipeToLess(args);
+		});
+		break;
             case "q":  
                 rl.close();  
-                break;  
+                break;
             default:  
                 showMenu();  
         }  
